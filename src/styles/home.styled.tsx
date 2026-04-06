@@ -33,7 +33,7 @@ export const TasksCount = styled.div<{ glow: boolean }>`
   position: relative;
   color: ${({ theme }) => getFontColor(theme.secondary)};
   /* background: #090b2258; */
-  background: ${({ theme }) => (isDark(theme.secondary) ? "#090b2258" : "#ffffff3e")};
+  background: ${({ theme }) => (isDark(theme.secondary) ? "#f7141458" : "#09f1433e")};
   transition: 0.3s all;
   display: flex;
   align-items: center;
