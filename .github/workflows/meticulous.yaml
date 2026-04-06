@@ -2,6 +2,7 @@
 
 name: Meticulous
 
+# rerun
 # Important: The workflow needs to run both on pushes to your main branch and on
 # pull requests. It needs to run on your main branch because it'll use the results
 # from the base commit of the PR on the main branch to compare against.
