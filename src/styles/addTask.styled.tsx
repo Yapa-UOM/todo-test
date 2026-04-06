@@ -13,7 +13,7 @@ export const AddTaskButton = styled(Button)`
   margin-top: 4px;
   border: none;
   padding: 16px 32px;
-  font-size: 24px;
+  font-size: 16px;
   background: ${({ theme }) => theme.primary};
   color: ${({ theme }) => getFontColor(theme.primary)};
   border-radius: 999px;
