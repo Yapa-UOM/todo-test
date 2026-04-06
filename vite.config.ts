@@ -6,6 +6,7 @@ import { qrcode } from "vite-plugin-qrcode";
 import manifest from "./manifest";
 import workbox from "./workbox.config";
 import basicSsl from "@vitejs/plugin-basic-ssl";
+import { createHtmlPlugin } from "vite-plugin-html";
 
 const isDevHost = process.env.npm_lifecycle_event === "dev:host";
 
@@ -17,7 +18,7 @@ const DEV_ENABLE_HTTPS = isDevHost;
 const DEV_ENABLE_PWA = false;
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   cacheDir: ".cache/vite",
   optimizeDeps: {
     include: ["react", "react-dom", "@emotion/react", "@emotion/styled"],
@@ -38,6 +39,16 @@ export default defineConfig({
       },
     }),
     DEV_ENABLE_HTTPS && basicSsl(),
+    createHtmlPlugin({
+      inject: {
+        data: {
+          meticulousScript:
+            mode !== "production"
+              ? `<script data-recording-token="KIKSNlPyMynKq363rTfrFLcwE0pS492DGKYrI3ol" data-is-production-environment="false" src="https://snippet.meticulous.ai/v1/meticulous.js"></script>`
+              : "",
+        },
+      },
+    }),
     // Generate QR code for npm run dev:host
     qrcode({ filter: (url) => /^https?:\/\/192\.168\.0\./.test(url) }),
     // https://vite-pwa-org.netlify.app/
@@ -102,4 +113,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));
