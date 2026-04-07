@@ -40,8 +40,6 @@ export default defineConfig(({ mode }) => ({
     }),
     DEV_ENABLE_HTTPS && basicSsl(),
     createHtmlPlugin({
-      entry: "src/main.tsx",
-
       inject: {
         data: {
           meticulousScript:
